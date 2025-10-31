@@ -12,6 +12,7 @@ const bookingService = require('../domain/services/bookings.service');
 exports.getBookings = async (req, res) => {
   try {
     const { status, startDate, endDate, experienceId } = req.query;
+    const noinclude = String(req.query.noinclude || '').trim() === '1';
     
     const whereClause = {};
     
@@ -30,7 +31,7 @@ exports.getBookings = async (req, res) => {
     
     const bookings = await Booking.findAll({
       where: whereClause,
-      include: [
+      include: noinclude ? [] : [
         {
           model: Experience,
           attributes: ['id', 'title', 'price', 'duration']
