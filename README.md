@@ -90,6 +90,6 @@ Database (Railway): ✅
 Clone repo:
 
 ```sh
-git clone https://github.com/<your-username>/Bookit.git
+git clone https://github.com/<imafrah>/Bookit.git
 cd Bookit
 
