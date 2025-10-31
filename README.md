@@ -194,19 +194,10 @@ Then disable sync flags (set `SYNC_DB=false`, `DB_SYNC_ALTER=false`) and redeplo
 
 ---
 
-## 🚀 Deploy Backend on Vercel (Serverless Option)
-Files already added:
-- `backend/api/index.js`
-- `backend/api/[...all].js`
-
-Create a new Vercel project:
-- Root Directory: `backend`
-- Framework: Other
-- No build command required for API-only
-- Env Vars: same DB_* as above (DB_SSL=false)
-
 Verify:
-- `GET https://bookit-t99l.onrender.com/api/experiences` → `{ status: "OK" }`
+- `GET https://bookit-t99l.onrender.com/api/experiences` → All Cards in Json
+- `GET https://bookit-t99l.onrender.com/api/promo` → All Promocodes Json
+- `GET https://bookit-t99l.onrender.com/api/bookings` → All Booked User Inforamtion Json
 
 Note: Do not use `src/index.js` (it calls `app.listen`). Serverless imports `src/app.js`.
 
