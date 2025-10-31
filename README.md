@@ -230,14 +230,6 @@ Use your Render backend URL or your Vercel backend URL.
 
 ---
 
-## 🧯 Troubleshooting
-- 500 on `/api/experiences`: tables missing or `isActive` not set → enable `DB_SYNC_ALTER=true` once or run seed; set `isActive=1` on rows.
-- 500 on `/api/bookings`: join failing due to table names → ensured models use `tableName: 'experiences' | 'bookings'` and FK `experienceId` exists; use `?noinclude=1` to isolate.
-- Can’t connect to DB from Render/Vercel: use Railway PUBLIC host/port (not `mysql.railway.internal`); set `DB_SSL=false` unless enforced.
-- Vercel 404 root page: that’s an API-only project; deploy frontend as a separate project from repo root, or set rewrites if using a single project.
-
----
-
 ## 🛡️ Production Notes
 - Disable sync flags after the first successful run.
 - Restrict CORS to your frontend domain if desired.
