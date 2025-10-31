@@ -29,9 +29,6 @@ app.get('/', (req, res) => {
   res.json({ status: "ok" });
 });
 
-app.get('/api/health', (req, res) => {
-  res.status(200).json({ status: "OK", message: "Backend is healthy" });
-});
 
 
 
