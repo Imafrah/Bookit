@@ -21,7 +21,17 @@ async function start() {
   try {
     await db.authenticate();
     console.log('Database connected...');
-    if (String(process.env.SYNC_DB || '').toLowerCase() === 'true') {
+    const syncForce = String(process.env.DB_SYNC_FORCE || '').toLowerCase() === 'true';
+    const syncAlter = !syncForce && String(process.env.DB_SYNC_ALTER || '').toLowerCase() === 'true';
+    const syncSimple = !syncForce && !syncAlter && String(process.env.SYNC_DB || '').toLowerCase() === 'true';
+
+    if (syncForce) {
+      await db.sync({ force: true });
+      console.log('Database synced with FORCE (DB_SYNC_FORCE=true)');
+    } else if (syncAlter) {
+      await db.sync({ alter: true });
+      console.log('Database synced with ALTER (DB_SYNC_ALTER=true)');
+    } else if (syncSimple) {
       await db.sync();
       console.log('Database synced (SYNC_DB=true)');
     }
@@ -44,6 +54,11 @@ app.use('/api/promo', promoRoutes);
 // Basic route
 app.get('/api', (req, res) => {
   res.send('BookIt API is running...');
+});
+
+// Health route for platform checks
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'OK' });
 });
 
 start();
