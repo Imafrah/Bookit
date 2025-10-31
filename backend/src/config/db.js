@@ -1,17 +1,15 @@
 const { Sequelize } = require('sequelize');
-const path = require('path');
-require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
-const config = require('./index');
+require('dotenv').config(); // remove custom path!
 
 const sequelize = new Sequelize(
-  config.db.name,
-  config.db.user,
-  config.db.password,
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
   {
-    host: config.db.host,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
     dialect: 'mysql',
-    port: config.db.port,
-    logging: config.db.logging,
+    logging: false,
     pool: {
       max: 5,
       min: 0,
