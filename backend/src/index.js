@@ -27,7 +27,7 @@ app.use('/api/bookings', bookingRoutes);
 app.use('/api/promo', promoRoutes);
 
 // Basic route
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.send('BookIt API is running...');
 });
 
