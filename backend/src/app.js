@@ -30,12 +30,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/health', (req, res) => {
-  res.json({
-    status: 'ok',
-    message: 'BookIt backend is healthy 🚀',
-    time: new Date()
-  });
+  res.status(200).json({ status: "OK", message: "Backend is healthy" });
 });
+
 
 
 // Global error handler (must be last)
