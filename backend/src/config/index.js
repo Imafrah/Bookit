@@ -25,6 +25,7 @@ const config = {
     user: required('DB_USER', process.env.DB_USER),
     password: process.env.DB_PASSWORD ?? '',
     logging: false,
+    ssl: String(process.env.DB_SSL || 'false').toLowerCase() === 'true',
   },
 };
 

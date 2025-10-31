@@ -1,4 +1,3 @@
-
 const { Sequelize } = require('sequelize');
 const config = require('./index');
 
@@ -11,11 +10,15 @@ const sequelize = new Sequelize(
     port: config.db.port,
     dialect: 'mysql',
     logging: config.db.logging,
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      }
-    }
+    dialectOptions: config.db.ssl
+      ? {
+          ssl: {
+            require: true,
+            rejectUnauthorized: false,
+          },
+        }
+      : undefined,
   }
 );
+
+module.exports = sequelize;
