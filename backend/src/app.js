@@ -23,7 +23,7 @@ db.authenticate()
 
 app.use('/api/experiences', experienceRoutes);
 app.use('/api/bookings', bookingRoutes);
-app.use('/api/promocodes', promoRoutes);
+app.use('/api/promo', promoRoutes);
 
 app.get('/', (req, res) => {
   res.json({ status: "ok" });
