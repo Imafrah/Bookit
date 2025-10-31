@@ -11,7 +11,7 @@ const Booking = db.define('Booking', {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: 'Experiences',
+      model: 'experiences',
       key: 'id',
     },
   },
@@ -65,6 +65,7 @@ const Booking = db.define('Booking', {
   },
 }, {
   timestamps: true,
+  tableName: 'bookings',
 });
 
 module.exports = Booking;
