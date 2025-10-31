@@ -55,6 +55,7 @@ const PromoCode = db.define('PromoCode', {
   },
 }, {
   timestamps: true,
+  tableName: 'promocodes',
 });
 
 module.exports = PromoCode;
