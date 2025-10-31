@@ -25,9 +25,10 @@ app.use('/api/experiences', experienceRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/promo', promoRoutes);
 
-app.get('/', (req, res) => {
-  res.send('BookIt API is running...');
+app.get('/api', (req, res) => {
+  res.send('Bookit API is running...');
 });
+
 
 // Global error handler (must be last)
 app.use(errorHandler);
