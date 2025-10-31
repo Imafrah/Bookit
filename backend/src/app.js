@@ -25,7 +25,7 @@ app.use('/api/experiences', experienceRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/promo', promoRoutes);
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.send('Bookit API is running...');
 });
 
