@@ -41,6 +41,7 @@ const Experience = db.define('Experience', {
   },
 }, {
   timestamps: true,
+  tableName: 'experiences',
 });
 
 module.exports = Experience;
