@@ -12,8 +12,8 @@ Database (Railway): ✅
 
 | Service | Status | URL |
 |--------|--------|-----|
-| Frontend | ✅ Live | https://<your-frontend>.vercel.app |
-| Backend API | ✅ Live | https://<your-backend>.onrender.com |
+| Frontend | ✅ Live | [https://<your-frontend>.vercel.app](https://bookit-6qr8.vercel.app/) |
+| Backend API | ✅ Live | [https://<your-backend>.onrender.com](https://bookit-t99l.onrender.com/api) |
 | Database | ✅ Cloud | Railway MySQL |
 
 > 🔄 Replace URLs after deployment ✅
@@ -96,7 +96,7 @@ cd Bookit
 ## ⚙️ Local Development
 
 ### Prerequisites
-- Node.js 18+ (or 20+)
+- Node.js 18+ 
 - MySQL instance (local or cloud)
 
 ### 1) Backend (Express)
@@ -151,7 +151,7 @@ From Railway → MySQL → Connect, copy the PUBLIC connection:
 Host: gondola.proxy.rlwy.net
 Port: 23090
 User: root
-Password: <your_password>
+Password: BSSZdYVXwjmIQtIAXCHCAUxcJctrmjRe
 Database: bookitdb
 ```
 Environment values to use in the backend:
@@ -159,7 +159,7 @@ Environment values to use in the backend:
 DB_HOST=gondola.proxy.rlwy.net
 DB_PORT=23090
 DB_USER=root
-DB_PASSWORD=<your_password>
+DB_PASSWORD=BSSZdYVXwjmIQtIAXCHCAUxcJctrmjRe
 DB_NAME=bookitdb
 DB_SSL=false
 ```
@@ -176,7 +176,7 @@ Service: Web Service
 - Root Directory: `backend`
 - Build Command: `npm install`
 - Start Command: `npm start`
-- Health Check Path: `/api/health` (or `/api`)
+- Check Path: `/api`
 
 Environment (Render → Environment):
 ```
@@ -206,7 +206,7 @@ Create a new Vercel project:
 - Env Vars: same DB_* as above (DB_SSL=false)
 
 Verify:
-- `GET https://<your-backend>.vercel.app/api/health` → `{ status: "OK" }`
+- `GET https://bookit-t99l.onrender.com/api/experiences` → `{ status: "OK" }`
 
 Note: Do not use `src/index.js` (it calls `app.listen`). Serverless imports `src/app.js`.
 
@@ -221,14 +221,14 @@ Create a new Vercel project from repo root (where `index.html` exists):
 
 Environment (Vercel → Project → Settings → Env Vars):
 ```
-VITE_API_BASE=https://<your-backend-domain>/api
+VITE_API_BASE=https://bookit-t99l.onrender.com/api
 ```
 Use your Render backend URL or your Vercel backend URL.
 
 ---
 
 ## 🔌 API Reference (Quick)
-- `GET /api/health` → health probe
+- `GET /api` → BookIt API is running...
 - `GET /api/experiences` → list active experiences
 - `GET /api/experiences/:id` → one experience with availability
 - `GET /api/experiences/:id/availability?date=YYYY-MM-DD`
